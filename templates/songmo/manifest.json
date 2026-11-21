@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "id": "songmo",
+  "name": "松墨排版",
+  "version": "1.0.0",
+  "author": "songmo",
+  "description": "中老年权威风：宋体正文、大字号高行距、深藏青标题配绛红点缀、章节自动编号、菱形分割线。移植自「松墨排版」设计规范与参考原型。",
+  "compat": { "cli": ">=0.1.0" },
+  "entry": { "css": "theme.css" },
+  "presets": [
+    {
+      "name": "庄重",
+      "variables": {
+        "--text": "#3b3a36",
+        "--heading": "#1f3a5f",
+        "--accent": "#9e2b25",
+        "--muted": "#8a8578",
+        "--paper": "#ffffff",
+        "--soft": "#faf6ee",
+        "--border": "#e5dfd3",
+        "--zebra": "#f8f5ef",
+        "--quote-text": "#5a5348",
+        "--code-bg": "#f4f0e8",
+        "--code-text": "#8a3a12",
+        "--pre-bg": "#faf8f3",
+        "--thead": "#1f3a5f",
+        "--task-box": "#9e2b25",
+        "--link": "#9e2b25"
+      }
+    },
+    {
+      "name": "典雅",
+      "variables": {
+        "--text": "#4a4038",
+        "--heading": "#4a3222",
+        "--accent": "#8c5b2f",
+        "--muted": "#98907e",
+        "--paper": "#fffdf8",
+        "--soft": "#faf5ea",
+        "--border": "#e8dfcc",
+        "--zebra": "#faf6ec",
+        "--quote-text": "#6b5d49",
+        "--code-bg": "#f6f0e4",
+        "--code-text": "#8a5a1e",
+        "--pre-bg": "#fbf7ee",
+        "--thead": "#4a3222",
+        "--task-box": "#8c5b2f",
+        "--link": "#8c5b2f"
+      }
+    },
+    {
+      "name": "素净",
+      "variables": {
+        "--text": "#44403c",
+        "--heading": "#23403c",
+        "--accent": "#2f6b5e",
+        "--muted": "#8b8f88",
+        "--paper": "#ffffff",
+        "--soft": "#f3f6f3",
+        "--border": "#e0e5e0",
+        "--zebra": "#f5f8f5",
+        "--quote-text": "#55605a",
+        "--code-bg": "#eef3ef",
+        "--code-text": "#2f6b5e",
+        "--pre-bg": "#f7faf7",
+        "--thead": "#23403c",
+        "--task-box": "#2f6b5e",
+        "--link": "#2f6b5e"
+      }
+    }
+  ],
+  "variables": [
+    { "key": "--text", "label": "正文文字", "type": "color", "default": "#3b3a36" },
+    { "key": "--heading", "label": "标题色", "type": "color", "default": "#1f3a5f" },
+    { "key": "--accent", "label": "强调色（色条/编号/分割点）", "type": "color", "default": "#9e2b25" },
+    { "key": "--muted", "label": "弱化文字", "type": "color", "default": "#8a8578" },
+    { "key": "--paper", "label": "文章底色", "type": "color", "default": "#ffffff" },
+    { "key": "--soft", "label": "引用/提示底色", "type": "color", "default": "#faf6ee" },
+    { "key": "--border", "label": "边框色", "type": "color", "default": "#e5dfd3" },
+    { "key": "--zebra", "label": "表格斑马纹", "type": "color", "default": "#f8f5ef" },
+    { "key": "--quote-text", "label": "引用文字色", "type": "color", "default": "#5a5348" },
+    { "key": "--code-bg", "label": "行内代码底色", "type": "color", "default": "#f4f0e8" },
+    { "key": "--code-text", "label": "行内代码文字色", "type": "color", "default": "#8a3a12" },
+    { "key": "--pre-bg", "label": "代码块底色", "type": "color", "default": "#faf8f3" },
+    { "key": "--thead", "label": "表头底色", "type": "color", "default": "#1f3a5f" },
+    { "key": "--task-box", "label": "任务列表勾色", "type": "color", "default": "#9e2b25" },
+    { "key": "--link", "label": "链接色", "type": "color", "default": "#9e2b25" },
+    { "key": "--font-size", "label": "正文字号（17 标准 / 19 舒适 / 21 关怀）", "type": "enum", "default": "19px", "options": ["17px", "19px", "21px"] },
+    { "key": "--line-height", "label": "行距（1.9 / 1.95 / 2.1 对应三档）", "type": "enum", "default": "1.95", "options": ["1.9", "1.95", "2.1"] }
+  ],
+  "typography": {
+    "autoSpacing": false,
+    "codeIndentPreserve": true,
+    "taskListGlyph": true,
+    "headingNumbering": true,
+    "hr": "diamond",
+    "figureCaption": true,
+    "tableZebra": true
+  },
+  "markdown": { "breaks": true },
+  "highlight": { "enable": true },
+  "publish": { "autoDigest": true }
+}

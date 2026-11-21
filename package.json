@@ -1,0 +1,40 @@
+{
+  "name": "md2mp",
+  "version": "0.2.2",
+  "description": "Markdown → 微信公众号 HTML，本地运行、模板 ZIP 分发的 CLI 工具",
+  "license": "MIT",
+  "author": "simonkuang",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonkuang/md2mp.git"
+  },
+  "type": "module",
+  "bin": {
+    "md2mp": "./dist/md2mp.js"
+  },
+  "scripts": {
+    "dev": "bun run src/cli.ts",
+    "build": "bun run build.ts",
+    "release": "bash release.sh",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-container": "^4.0.0",
+    "gray-matter": "^4.0.3",
+    "postcss": "^8.4.49",
+    "cheerio": "^1.0.0",
+    "fflate": "^0.8.2",
+    "zod": "^3.24.1",
+    "highlight.js": "^11.11.1",
+    "css-what": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "bun-types": "^1.1.0",
+    "typescript": "^5.7.2"
+  }
+}

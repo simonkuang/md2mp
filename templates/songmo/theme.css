@@ -1,0 +1,279 @@
+/* ============================================================
+ * 松墨排版 · 中老年权威风主题
+ * 来源：交接单_01_设计规范.md §3/§4（参考原型 index.html buildArticleCSS/buildHljsCSS）
+ *
+ * 书写约定：
+ *  - 选择器一律挂在 #js_article（渲染根）之下；
+ *  - 颜色/字号一律 var(--x) 引用 manifest 变量，md2mp 内联引擎在导出前解析为字面值，
+ *    产物不含 CSS 变量（公众号编辑器不解析 var()）；
+ *  - 禁止伪元素/伪类/@media/@font-face（lint MP040-043）：分割线、斑马纹、任务勾
+ *    均由管线转为真实 DOM 节点后再由本文件 styling。
+ * ============================================================ */
+
+:root {
+  /* 默认档：庄重 · 舒适（与 manifest.variables 默认值一致，供脱离 CLI 单独预览时兜底） */
+  --text: #3b3a36;
+  --heading: #1f3a5f;
+  --accent: #9e2b25;
+  --muted: #8a8578;
+  --paper: #ffffff;
+  --soft: #faf6ee;
+  --border: #e5dfd3;
+  --zebra: #f8f5ef;
+  --quote-text: #5a5348;
+  --code-bg: #f4f0e8;
+  --code-text: #8a3a12;
+  --pre-bg: #faf8f3;
+  --thead: #1f3a5f;
+  --task-box: #9e2b25;
+  --link: #9e2b25;
+  --font-size: 19px;
+  --line-height: 1.95;
+}
+
+/* ---------- 容器（规范 §4.2） ---------- */
+#js_article {
+  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", "SimSun", serif;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--text);
+  background: var(--paper);
+  word-break: break-word;
+  text-align: justify;
+}
+
+/* ---------- 标题层级（规范 §4.1） ---------- */
+#js_article h1 {
+  font-size: 1.52em;
+  color: var(--heading);
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0 0 .9em;
+  letter-spacing: .02em;
+}
+
+#js_article h2 {
+  font-size: 1.3em;
+  color: var(--heading);
+  font-weight: 700;
+  margin: 1.7em 0 .75em;
+  padding-left: 12px;
+  border-left: 5px solid var(--accent);
+  line-height: 1.5;
+  text-align: left;
+}
+
+#js_article h3 {
+  font-size: 1.15em;
+  color: var(--heading);
+  font-weight: 700;
+  margin: 1.5em 0 .65em;
+  padding-left: 11px;
+  border-left: 3px solid var(--border);
+  line-height: 1.5;
+  text-align: left;
+}
+
+#js_article h4 {
+  font-size: 1.03em;
+  color: var(--heading);
+  font-weight: 700;
+  margin: 1.35em 0 .6em;
+  text-align: left;
+}
+
+/* 章节自动编号（管线生成 <span class="mp-h-num">，h1 不参与） */
+#js_article .mp-h-num {
+  color: var(--accent);
+  margin-right: .12em;
+  font-weight: 700;
+}
+
+/* ---------- 正文元素（规范 §4.2） ---------- */
+#js_article p { margin: 0 0 1em; }
+
+#js_article strong { color: var(--heading); font-weight: 700; }
+
+#js_article em { font-style: italic; }
+
+#js_article del { color: var(--muted); }
+
+#js_article a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
+
+#js_article blockquote {
+  margin: 1.2em 0;
+  padding: 14px 16px;
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  color: var(--quote-text);
+  font-size: .97em;
+}
+
+#js_article blockquote p { margin: 0; }
+
+#js_article ul, #js_article ol { margin: 0 0 1em; padding-left: 1.7em; }
+
+#js_article li { margin: .4em 0; }
+
+#js_article li p { margin: 0 0 .3em; }
+
+/* ---------- 分割线（规范 §4.2：细线—菱形—细线）----------
+ * 管线在 typography.hr = "diamond" 时将 <hr> 替换为：
+ *   <div class="mp-hr"><span class="mp-hr-line"/><span class="mp-hr-dot"/><span class="mp-hr-line"/></div>
+ */
+#js_article .mp-hr { text-align: center; margin: 1.9em 0; line-height: 1; }
+
+#js_article .mp-hr-line {
+  display: inline-block;
+  width: 64px;
+  height: 1px;
+  background: var(--border);
+  vertical-align: middle;
+}
+
+#js_article .mp-hr-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  margin: 0 12px;
+  transform: rotate(45deg);
+  vertical-align: middle;
+}
+
+/* ---------- 任务列表（规范 §5：checkbox 转 ☑/☐ 字形） ---------- */
+#js_article .mp-task-item { list-style: none; margin-left: -1.7em; }
+
+#js_article .mp-task-box {
+  color: var(--task-box);
+  font-weight: 700;
+  margin-right: 8px;
+  font-size: 1.05em;
+}
+
+/* ---------- 表格（规范 §4.3；斑马纹由管线为偶数行加 mp-alt 类，规避 :nth-child） ---------- */
+#js_article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2em 0;
+  font-size: .95em;
+  line-height: 1.65;
+}
+
+#js_article th {
+  background: var(--thead);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 10px 12px;
+  border: 1px solid var(--thead);
+  text-align: left;
+}
+
+#js_article td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+}
+
+#js_article tr.mp-alt td { background: var(--zebra); }
+
+/* ---------- 代码（规范 §4.4） ---------- */
+#js_article code {
+  font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: var(--code-bg);
+  color: var(--code-text);
+  padding: 2px 6px;
+  border-radius: 3px;
+  word-break: break-all;
+}
+
+#js_article pre {
+  margin: 1.2em 0;
+  padding: 14px 16px;
+  background: var(--pre-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-x: auto;
+  line-height: 1.7;
+  text-align: left;
+}
+
+#js_article pre code {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: #4a463f;
+  font-size: .85em;
+  white-space: pre;
+  word-break: normal;
+}
+
+/* ---------- 图片与题注（规范 §4.5；管线生成 figure.mp-photo 与 figcaption） ---------- */
+#js_article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+#js_article figure { margin: 1.2em 0; text-align: center; }
+
+#js_article figure.mp-photo img { width: 100%; height: auto; display: block; }
+
+#js_article figcaption {
+  margin-top: 8px;
+  font-size: .86em;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ---------- 提示容器（管线将 :::tip / :::warning 等渲染为 section.mp-*） ---------- */
+#js_article section.mp-tip, #js_article section.mp-note, #js_article section.mp-info,
+#js_article section.mp-success, #js_article section.mp-warning, #js_article section.mp-danger {
+  margin: 1.2em 0;
+  padding: 14px 16px;
+  background: var(--soft);
+  border-left: 4px solid var(--accent);
+  color: var(--quote-text);
+  font-size: .97em;
+}
+
+#js_article .mp-container-label {
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 .4em;
+}
+
+/* ---------- 代码高亮令牌（规范 §4.4 高亮令牌色表） ---------- */
+#js_article .hljs-comment, #js_article .hljs-quote { color: #9a9484; font-style: normal; }
+
+#js_article .hljs-keyword, #js_article .hljs-selector-tag, #js_article .hljs-literal, #js_article .hljs-doctag {
+  color: var(--code-text);
+  font-weight: 600;
+}
+
+#js_article .hljs-string, #js_article .hljs-regexp, #js_article .hljs-addition { color: #2e6b4f; }
+
+#js_article .hljs-number, #js_article .hljs-symbol, #js_article .hljs-bullet { color: #1f3a5f; }
+
+#js_article .hljs-title, #js_article .hljs-section, #js_article .hljs-function .hljs-title { color: #1f3a5f; font-weight: 600; }
+
+#js_article .hljs-name, #js_article .hljs-selector-id, #js_article .hljs-selector-class { color: #7a5c1e; }
+
+#js_article .hljs-type, #js_article .hljs-class .hljs-title, #js_article .hljs-built_in { color: #7a5c1e; font-weight: 600; }
+
+#js_article .hljs-attr, #js_article .hljs-attribute, #js_article .hljs-variable, #js_article .hljs-template-variable { color: #8a3a12; }
+
+#js_article .hljs-meta { color: #6b665c; }
+
+#js_article .hljs-emphasis { font-style: italic; }
+
+#js_article .hljs-strong { font-weight: 700; }

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "default",
+  "name": "默认主题",
+  "version": "1.0.0",
+  "author": "md2mp",
+  "description": "开箱即用的清爽科技风主题，适配公众号 677px 正文宽度。",
+  "compat": { "cli": ">=0.1.0" },
+  "entry": { "css": "theme.css" },
+  "variables": [
+    { "key": "--primary", "label": "主题色", "type": "color", "default": "#576b95" },
+    { "key": "--text", "label": "正文色", "type": "color", "default": "#3f3f3f" },
+    { "key": "--bg-soft", "label": "浅底色", "type": "color", "default": "#f7f8fa" },
+    { "key": "--font-size", "label": "正文字号", "type": "length", "default": "16px" }
+  ],
+  "typography": {
+    "autoSpacing": true,
+    "codeIndentPreserve": true,
+    "taskListGlyph": true,
+    "hr": "plain"
+  },
+  "highlight": { "enable": true }
+}

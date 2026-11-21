@@ -1,0 +1,117 @@
+/* 默认主题 · 挂在 #js_article 渲染根下；颜色走 var(--x)，导出前内联化 */
+:root {
+  --primary: #576b95;
+  --text: #3f3f3f;
+  --bg-soft: #f7f8fa;
+  --font-size: 16px;
+}
+
+#js_article {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: var(--font-size);
+  line-height: 1.75;
+  color: var(--text);
+  word-break: break-word;
+}
+
+#js_article h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 1em;
+  line-height: 1.4;
+  text-align: center;
+}
+
+#js_article h2 {
+  font-size: 1.35em;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1.6em 0 .7em;
+  padding-bottom: .3em;
+  border-bottom: 1px solid var(--bg-soft);
+  line-height: 1.5;
+}
+
+#js_article h3 {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #333;
+  margin: 1.4em 0 .6em;
+  line-height: 1.5;
+}
+
+#js_article h4 { font-size: 1.05em; font-weight: 700; margin: 1.2em 0 .5em; }
+
+#js_article p { margin: 0 0 1em; }
+#js_article strong { font-weight: 700; color: #222; }
+#js_article em { font-style: italic; }
+#js_article del { color: #999; }
+
+#js_article a { color: var(--primary); text-decoration: underline; word-break: break-all; }
+
+#js_article blockquote {
+  margin: 1.2em 0;
+  padding: 12px 16px;
+  background: var(--bg-soft);
+  border-left: 4px solid var(--primary);
+  color: #666;
+}
+#js_article blockquote p { margin: 0; }
+
+#js_article ul, #js_article ol { margin: 0 0 1em; padding-left: 1.8em; }
+#js_article li { margin: .35em 0; }
+#js_article li p { margin: 0 0 .3em; }
+
+#js_article .mp-task-item { list-style: none; margin-left: -1.8em; }
+#js_article .mp-task-box { color: var(--primary); font-weight: 700; margin-right: 8px; }
+
+#js_article hr { border: 0; border-top: 1px solid #e5e5e5; margin: 2em 0; }
+
+#js_article table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: .95em; }
+#js_article th { background: var(--primary); color: #fff; font-weight: 700; padding: 8px 10px; border: 1px solid #ddd; text-align: left; }
+#js_article td { padding: 8px 10px; border: 1px solid #ddd; }
+#js_article tr.mp-alt td { background: var(--bg-soft); }
+
+#js_article code {
+  font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: var(--bg-soft);
+  color: #c7254e;
+  padding: 2px 6px;
+  border-radius: 3px;
+  word-break: break-all;
+}
+#js_article pre {
+  margin: 1.2em 0;
+  padding: 14px 16px;
+  background: #282c34;
+  border-radius: 6px;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+#js_article pre code { background: transparent; color: #abb2bf; padding: 0; font-size: .85em; white-space: pre; word-break: normal; }
+
+/* hljs 令牌色（Atom One Dark 风格） */
+#js_article .hljs-comment, #js_article .hljs-quote { color: #5c6370; font-style: italic; }
+#js_article .hljs-keyword, #js_article .hljs-selector-tag, #js_article .hljs-literal { color: #c678dd; }
+#js_article .hljs-string, #js_article .hljs-regexp, #js_article .hljs-addition { color: #98c379; }
+#js_article .hljs-number, #js_article .hljs-symbol, #js_article .hljs-bullet { color: #d19a66; }
+#js_article .hljs-title, #js_article .hljs-section, #js_article .hljs-function { color: #61aeee; }
+#js_article .hljs-built_in, #js_article .hljs-type, #js_article .hljs-name { color: #e5c07b; }
+#js_article .hljs-attr, #js_article .hljs-attribute, #js_article .hljs-variable { color: #e06c75; }
+#js_article .hljs-meta { color: #61aeee; }
+#js_article .hljs-emphasis { font-style: italic; }
+#js_article .hljs-strong { font-weight: 700; }
+
+#js_article img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+#js_article section.mp-tip, #js_article section.mp-warning, #js_article section.mp-info,
+#js_article section.mp-note, #js_article section.mp-danger, #js_article section.mp-success {
+  margin: 1.2em 0; padding: 12px 16px; background: var(--bg-soft); border-left: 4px solid var(--primary);
+}
+#js_article .mp-container-label { font-weight: 700; color: var(--primary); margin: 0 0 .4em; }
+
+#js_article figure { margin: 1.2em 0; text-align: center; }
+#js_article figcaption { margin-top: .5em; font-size: .86em; color: #999; }
+#js_article .mp-h-num { color: var(--primary); font-weight: 700; margin-right: .15em; }

@@ -1,0 +1,14 @@
+# 依赖与构建产物
+node_modules/
+dist/
+*.bun-build
+templates/*.zip
+
+# 本地凭据配置
+.md2mprc.json
+.env
+.env.local
+
+# 系统文件
+.DS_Store
+Thumbs.db
